@@ -3,11 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.2</Version>
     <Authors>Developer_ken</Authors>
     <Company>Microstorm Tech</Company>
     <Description>Visual solutions that i used in my own project.</Description>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/MicrostormSoft/VisualDetector</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MicrostormSoft/VisualDetector</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

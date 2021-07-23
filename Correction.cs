@@ -11,6 +11,14 @@ namespace VisualDetector
             public Point2f TopLeft, TopRight, BottomRight, BottomLeft;
         }
 
+        /// <summary>
+        /// Rectificate image
+        /// </summary>
+        /// <param name="image">just the image</param>
+        /// <param name="imagepoints">4 points on the image</param>
+        /// <param name="targetpoints">where these 4 points should be at</param>
+        /// <param name="OutputSize">How big should the output mat be. Output will be resized to this size.</param>
+        /// <returns>Output image</returns>
         public static Mat ImageRectification(Mat image, KeyPoints imagepoints, KeyPoints targetpoints, Size OutputSize)
         {
             Point2f[] pts_src = {
@@ -24,6 +32,15 @@ namespace VisualDetector
             return image.WarpPerspective(M, OutputSize);
         }
 
+        /// <summary>
+        /// Correction for a 9-point-board which is 65*65.
+        /// <para>The board has 9 while circles on a black background, the center of the conner circles are 12.5 away from both edges.</para>
+        /// </summary>
+        /// <param name="mat">image to process</param>
+        /// <param name="mp">resize rate for getting the proper mat size</param>
+        /// <param name="sized">diameter of the white circle. for blur.</param>
+        /// <param name="graythreshold">threshold use for graying the image</param>
+        /// <returns>corrected image</returns>
         public static Mat Auto9PBoardCorrection(Mat mat, int mp = 8, int sized = 30, int graythreshold = 140)
         {
             var binframe = mat.CvtColor(ColorConversionCodes.BGR2GRAY).Blur(new Size(sized, sized));
@@ -62,6 +79,11 @@ namespace VisualDetector
             }
         }
 
+        /// <summary>
+        /// Get the four conner point from lots of points.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns></returns>
         public static Correction.KeyPoints GetKeypoints(IEnumerable<Point> points)
         {
             Point zero = new Point(0, 0);
