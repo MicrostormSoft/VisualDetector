@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualDetector", "VisualDetector.csproj", "{FD6BF9EB-D075-41D1-B47C-45A2D4BF7096}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD6BF9EB-D075-41D1-B47C-45A2D4BF7096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6BF9EB-D075-41D1-B47C-45A2D4BF7096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6BF9EB-D075-41D1-B47C-45A2D4BF7096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6BF9EB-D075-41D1-B47C-45A2D4BF7096}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {386A113C-7130-4B9E-8A4C-9905CE2D5AA3}
+	EndGlobalSection
+EndGlobal
