@@ -52,7 +52,7 @@ namespace VisualDetector
             kernel = Cv2.GetStructuringElement(MorphShapes.Rect, new Size(3, 3), new Point(-1, -1));
             Cv2.MorphologyEx(binframe, binframe, MorphTypes.Open, kernel, new Point(-1, -1));
             Cv2.FindContours(binframe, out Point[][] conts, out HierarchyIndex[] h, RetrievalModes.External, ContourApproximationModes.ApproxNone);
-            Cv2.DrawContours(mat, conts, -1, Scalar.Green);
+            //Cv2.DrawContours(mat, conts, -1, Scalar.Green);
             //分离不连续的散点
 
             List<Point> RectPoints = new List<Point>();
@@ -61,7 +61,7 @@ namespace VisualDetector
             {
                 if (!Detection.Circle(shape, out Point center, out double confidence, out double R, centerth, singleth)) continue;//是圆?
                 RectPoints.Add(center);
-                mat.DrawMarker(center, Scalar.Blue, markerSize: 30);
+                //mat.DrawMarker(center, Scalar.Blue, markerSize: 30);
             }
             if (RectPoints.Count >= 4)//有超过4个标记点
             {
