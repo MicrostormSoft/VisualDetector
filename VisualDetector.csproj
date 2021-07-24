@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.3</Version>
     <Authors>Developer_ken</Authors>
     <Company>Microstorm Tech</Company>
     <Description>Visual solutions that i used in my own project.</Description>

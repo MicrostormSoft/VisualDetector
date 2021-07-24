@@ -41,26 +41,29 @@ namespace VisualDetector
         /// <param name="sized">diameter of the white circle. for blur.</param>
         /// <param name="graythreshold">threshold use for graying the image</param>
         /// <returns>corrected image</returns>
-        public static Mat Auto9PBoardCorrection(Mat mat, int mp = 8, int sized = 30, int graythreshold = 140)
+        public static Mat Auto9PBoardCorrection(Mat mat, int mp = 8, int sized = 30, int graythreshold = 140, double centerth = 0.2, double singleth = 0.2)
         {
             var binframe = mat.CvtColor(ColorConversionCodes.BGR2GRAY).Blur(new Size(sized, sized));
 
             Cv2.Threshold(binframe, binframe, graythreshold, 255, ThresholdTypes.Binary);
+            //Cv2.AdaptiveThreshold(binframe, binframe, 255, AdaptiveThresholdTypes.MeanC, ThresholdTypes.Binary, graythreshold, 0);
             Mat kernel = Cv2.GetStructuringElement(MorphShapes.Rect, new Size(3, 3), new Point(-1, -1));
             Cv2.MorphologyEx(binframe, binframe, MorphTypes.Close, kernel, new Point(-1, -1));
             kernel = Cv2.GetStructuringElement(MorphShapes.Rect, new Size(3, 3), new Point(-1, -1));
             Cv2.MorphologyEx(binframe, binframe, MorphTypes.Open, kernel, new Point(-1, -1));
             Cv2.FindContours(binframe, out Point[][] conts, out HierarchyIndex[] h, RetrievalModes.External, ContourApproximationModes.ApproxNone);
+            Cv2.DrawContours(mat, conts, -1, Scalar.Green);
             //分离不连续的散点
 
             List<Point> RectPoints = new List<Point>();
 
             foreach (var shape in conts)
             {
-                if (!Detection.Circle(shape, out Point center, out double confidence, out double R)) continue;//是圆?
+                if (!Detection.Circle(shape, out Point center, out double confidence, out double R, centerth, singleth)) continue;//是圆?
                 RectPoints.Add(center);
+                mat.DrawMarker(center, Scalar.Blue, markerSize: 30);
             }
-            if (RectPoints.Count >= 9)//有超过9个标记点
+            if (RectPoints.Count >= 4)//有超过4个标记点
             {
                 var keypoints = GetKeypoints(RectPoints);
                 return Correction.ImageRectification(mat, keypoints,
