@@ -25,7 +25,7 @@ namespace VisualDetector
             Cv2.MorphologyEx(binframe, binframe, MorphTypes.Open, kernel, new Point(-1, -1));
 
             Cv2.FindContours(binframe, out Point[][] conts, out HierarchyIndex[] h, RetrievalModes.External, ContourApproximationModes.ApproxNone);//分离不连续的散点,分离物体
-            colorimage.DrawContours(conts, -1, Scalar.Green);
+            //colorimage.DrawContours(conts, -1, Scalar.Green);
             List<Point> RectPoints = new List<Point>();
 
             foreach (var shape in conts)
